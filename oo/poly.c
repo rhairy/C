@@ -1,17 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+enum CAT_BREED {MAINE_COON, TABBY, CALICO};
+
 struct cat {
-	unsigned type; // MaineCoon = 0, Tabby = 1
+	enum CAT_BREED type;
 };
 
 struct cat_maine_coon {
-	struct cat super;
+	enum CAT_BREED type;
 	void (*call)(void);
 };
 
 struct cat_tabby {
-	struct cat super;
+	enum CAT_BREED type;
 	void (*call)(void);
 };
 
@@ -30,12 +32,12 @@ int main(int argc, char *argv[])
 	struct cat *a[2];
 	
 	struct cat_maine_coon *Potter = malloc(sizeof(struct cat_maine_coon));
-	Potter->super.type = 0;
+	Potter->type = MAINE_COON;
 	Potter->call = cat_maine_coon_call;
 	
 	
 	struct cat_tabby *Mario = malloc(sizeof(struct cat_tabby));
-	Mario->super.type = 1;
+	Mario->type = TABBY;
 	Mario->call = cat_tabby_call;
 	
 	a[0] = (struct cat*) Potter;
@@ -43,7 +45,7 @@ int main(int argc, char *argv[])
 	
 	unsigned i = 0;
 	for (i = 0; i < 2; i++) {
-		if (a[i]->type == 0) {
+		if (a[i]->type == MAINE_COON) {
 			((struct cat_maine_coon *)a[i])->call();
 		} else {
 			((struct cat_maine_coon *)a[i])->call();
