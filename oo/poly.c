@@ -51,5 +51,9 @@ int main(int argc, char *argv[])
 			((struct cat_maine_coon *)a[i])->call();
 		}
 	}
+	
+	free(Potter);
+	free(Mario);
+	
 	return 0;
 }
