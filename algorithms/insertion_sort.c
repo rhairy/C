@@ -11,10 +11,11 @@ void swap_int(void *a, unsigned x, unsigned y);
 int main(int argc, char* argv[])
 {	
 	int x;
-	srand(time(NULL));
-	int a[50];
-	
+	int a[LEN];
 	unsigned i;
+	
+	srand(time(NULL));
+	
 	for (i = 0; i < LEN; i++) {
 		x = rand() % 1000;
 		a[i] = x;
