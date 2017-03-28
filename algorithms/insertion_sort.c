@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 void insertion_sort(void *a, size_t len, int (*compare)(void *a, unsigned x, unsigned y), void (*swap)(void *a, unsigned x, unsigned y));
-int is_x_gt_y(int *a, unsigned x, unsigned y);
-void swap_int(int *a, unsigned x, unsigned y);
+int is_x_gt_y(void *a, unsigned x, unsigned y);
+void swap_int(void *a, unsigned x, unsigned y);
 
 int main(int argc, char* argv[])
 {	
@@ -42,19 +42,21 @@ void insertion_sort(void *a, size_t len, int (*compare)(void *a, unsigned x, uns
 	}
 }
 
-int is_x_gt_y(int *a, unsigned x, unsigned y) 
+int is_x_gt_y(void *a, unsigned x, unsigned y) 
 {
-	if (a[x] > a[y]) {
+	int* ia = a;
+	if (ia[x] > ia[y]) {
 		return 0;
 	} else {
 		return 1;
 	}
 }
 
-void swap_int(int *a, unsigned x, unsigned y)
+void swap_int(void *a, unsigned x, unsigned y)
 {
+	int *ia = a;
 	int tmp;
-	tmp = a[x];
-	a[x] = a[y];
-	a[y] = tmp;
+	tmp = ia[x];
+	ia[x] = ia[y];
+	ia[y] = tmp;
 }
