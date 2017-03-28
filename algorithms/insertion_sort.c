@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
+#define LEN 50
 
 void insertion_sort(void *a, size_t len, int (*compare)(void *a, unsigned x, unsigned y), void (*swap)(void *a, unsigned x, unsigned y));
 int is_x_gt_y(void *a, unsigned x, unsigned y);
@@ -7,26 +10,28 @@ void swap_int(void *a, unsigned x, unsigned y);
 
 int main(int argc, char* argv[])
 {	
-	int a[10];
 	int x;
+	srand(time(NULL));
+	int a[50];
 	
 	unsigned i;
-	for (i = 0; i < 10; i++) {
-		x = rand() % 10;
+	for (i = 0; i < LEN; i++) {
+		x = rand() % 1000;
 		a[i] = x;
 	}
 	
-	for (i = 0; i < 10; i++) {
+	for (i = 0; i < LEN; i++) {
 		printf("%i ", a[i]);
 	}
 	
-	insertion_sort (a, 10, is_x_gt_y, swap_int);
+	insertion_sort (a, LEN, is_x_gt_y, swap_int);
 	
 	printf("\n");
 	
-	for (i = 0; i < 10; i++) {
+	for (i = 0; i < LEN; i++) {
 		printf("%i ", a[i]);
 	}
+	
 	return 0;
 }
 
