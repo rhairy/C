@@ -6,7 +6,8 @@
 
 int main(int argc, char* argv[])
 {
-	clock_t start, end, cpu_time;
+	clock_t start, end;
+	double cpu_time;
 	int a[LEN];
 	unsigned i;
 
@@ -20,8 +21,8 @@ int main(int argc, char* argv[])
 	printf("\n");
 	end = clock();
 
-	cpu_time = start - end;
+	cpu_time = (double)(end - start) / CLOCKS_PER_SEC;
 	
-	printf("%Lf\n", cpu_time);
+	printf("%f\n", cpu_time);
 	return 0;
 }
