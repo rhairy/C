@@ -38,9 +38,9 @@ int is_x_gt_y(void *a, unsigned x, unsigned y)
 {
 	int* ia = a;
 	if (ia[x] > ia[y]) {
-		return 0;
-	} else {
 		return 1;
+	} else {
+		return 0;
 	}
 }
 

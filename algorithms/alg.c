@@ -3,11 +3,11 @@
 void insertion_sort(void *a, size_t len, int (*compare)(void *a, unsigned x, unsigned y), void (*swap)(void *a, unsigned x, unsigned y))
 {
 	unsigned i, j;
-	for (i = 0; i < len; i++) {
-		for (j = i; j > 0; j--) {
-			if (compare(a, j, j-1)) {
+	for (i = 1; i < len; i++) {
+		j = i;
+		while(j > 0 && compare(a, j, j-1)) {
 				swap(a, j, j-1);
-			}
+				j--;
 		}
 	}
 }
