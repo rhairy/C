@@ -1,5 +1,17 @@
 #include <stdlib.h>
 
+void bubble_sort(void *a, size_t len, int (*compare)(void *a, size_t x, size_t y), void (*swap)(void *a, size_t x, size_t y))
+{
+	unsigned i, j;
+	for (i = 0; i < len - 1; i++) {
+		for (j = 0; j < len - 1 - i; j++) {
+			if (compare(a, j + 1, j)) {
+				swap(a, j, j + 1);
+			}
+		}
+	}
+}
+
 void insertion_sort(void *a, size_t len, int (*compare)(void *a, size_t x, size_t y), void (*swap)(void *a, size_t x, size_t y))
 {
 	unsigned i, j;

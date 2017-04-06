@@ -6,15 +6,17 @@
 
 #define LEN 10
 
-int is_x_gt_y(void *a, unsigned x, unsigned y);
-void swap_int(void *a, unsigned x, unsigned y);
-void print_int(void *a, unsigned i);
-void print_array(void *a, size_t len, void (*print_function)(void *a, unsigned index));
+int is_x_gt_y(void *a, size_t x, size_t y);
+void swap_int(void *a, size_t x, size_t y);
+void print_int(void *a, size_t i);
+void print_array(void *a, size_t len, void (*print_function)(void *a, size_t index));
 
 int main(int argc, char* argv[])
 {	
 	int x;
 	int a[LEN];
+	int b[LEN];
+	int c[LEN];
 	unsigned i;
 	
 	srand(time(NULL));
@@ -23,18 +25,32 @@ int main(int argc, char* argv[])
 	for (i = 0; i < LEN; i++) {
 		x = rand() % 1000;
 		a[i] = x;
+		b[i] = x;
+		c[i] = x;
 	}
 	
-	/* Print array, sort, and print result. */
+	/* Bubble Sort. */
+	printf("*** Bubble Sort ***\n");
 	print_array(a, LEN, print_int);
-	insertion_sort (a, LEN, is_x_gt_y, swap_int);
-	printf("\n");
+	bubble_sort(a, LEN, is_x_gt_y, swap_int);
 	print_array(a, LEN, print_int);
+	
+	/* Insertion Sort. */
+	printf("*** Insertion Sort ***\n");
+	print_array(b, LEN, print_int);
+	insertion_sort(b, LEN, is_x_gt_y, swap_int);
+	print_array(b, LEN, print_int);
+	
+	/* Selection Sort. */
+	printf("*** Selection Sort ***\n");
+	print_array(c, LEN, print_int);
+	selection_sort(c, LEN, is_x_gt_y, swap_int);
+	print_array(c, LEN, print_int);
 	
 	return 0;
 }
 
-int is_x_gt_y(void *a, unsigned x, unsigned y) 
+int is_x_gt_y(void *a, size_t x, size_t y) 
 {
 	int* ia = a;
 	if (ia[x] > ia[y]) {
@@ -44,7 +60,7 @@ int is_x_gt_y(void *a, unsigned x, unsigned y)
 	}
 }
 
-void swap_int(void *a, unsigned x, unsigned y)
+void swap_int(void *a, size_t x, size_t y)
 {
 	int *ia = a;
 	int tmp;
@@ -53,16 +69,17 @@ void swap_int(void *a, unsigned x, unsigned y)
 	ia[y] = tmp;
 }
 
-void print_int(void *a, unsigned i)
+void print_int(void *a, size_t i)
 {
 	int* tmp = a;
 	printf("%i ", tmp[i]);
 }
 
-void print_array(void *a, size_t len, void (*print_function)(void *a, unsigned index))
+void print_array(void *a, size_t len, void (*print_function)(void *a, size_t index))
 {
 	unsigned i;
 	for (i = 0; i < len; i++) {
 		print_function(a, i);
 	}
+	printf("\n");
 }
