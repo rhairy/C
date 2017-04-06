@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-void insertion_sort(void *a, size_t len, int (*compare)(void *a, unsigned x, unsigned y), void (*swap)(void *a, unsigned x, unsigned y))
+void insertion_sort(void *a, size_t len, int (*compare)(void *a, size_t x, size_t y), void (*swap)(void *a, size_t x, size_t y))
 {
 	unsigned i, j;
 	for (i = 1; i < len; i++) {
@@ -12,7 +12,7 @@ void insertion_sort(void *a, size_t len, int (*compare)(void *a, unsigned x, uns
 	}
 }
 
-void selection_sort(void *a, size_t len, int (*compare)(void *a, unsigned x, unsigned y), void (*swap)(void *a, unsigned x, unsigned y))
+void selection_sort(void *a, size_t len, int (*compare)(void *a, size_t x, size_t y), void (*swap)(void *a, size_t x, size_t y))
 {
 	unsigned i, j, min;
 	for (i = 0; i <= len - 2; i++) {
